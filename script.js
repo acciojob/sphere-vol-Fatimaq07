@@ -1,17 +1,14 @@
 function volume_sphere() {
-            let r = parseFloat(document.getElementById("radius").value);
+  const radiusInput = document.getElementById('radius').value;
+  const radius = parseFloat(radiusInput);
+  let volume;
 
-            
-            if (isNaN(r) || r < 0) {
-                document.getElementById("volume").value = NaN;
-                return;
-            }
+  if (isNaN(radius) || radius < 0) {
+    volume = NaN;
+  } else {
+    volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+    volume = volume.toFixed(4);
+  }
 
-            
-            let volume = (4 / 3) * Math.PI * Math.pow(r, 3);
-
-            
-            document.getElementById("volume").value = volume.toFixed(4);
-        }
-
-window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+  document.getElementById('volume').value = volume;
+}
